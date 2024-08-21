@@ -1,0 +1,104 @@
+Metadata-Version: 2.1
+Name: ezneural
+Version: 0.1.0
+Summary: A library for creating neural networks
+Author: Wanderson Cavalcante
+Author-email: wanbnn@outlook.com.br
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.21.0
+
+# ezneural
+
+**ezneural** Ã© uma biblioteca Python projetada para tornar a criaÃ§Ã£o e treinamento de redes neurais mais simples e acessÃ­vel. Ideal para iniciantes que desejam experimentar redes neurais sem a complexidade dos frameworks mais avanÃ§ados.
+
+## Funcionalidades
+
+- CriaÃ§Ã£o de camadas densas (Fully Connected)
+- Suporte a funÃ§Ãµes de ativaÃ§Ã£o ReLU, Sigmoid e Tanh
+- FunÃ§Ã£o de perda Mean Squared Error
+- Otimizador SGD (Stochastic Gradient Descent)
+- Interface intuitiva para construÃ§Ã£o e treinamento de redes neurais
+
+## Estrutura do Projeto
+
+O projeto estÃ¡ organizado da seguinte maneira:
+
+ezneural/
+init.py
+layers.py
+model.py
+optimizers.py
+utils.py
+
+### Camadas
+
+- **`Dense`**: Camada densa totalmente conectada com funÃ§Ãµes de ativaÃ§Ã£o ReLU, Sigmoid ou Tanh.
+
+### Modelos
+
+- **`Model`**: Interface para construir, compilar, treinar e prever com redes neurais.
+
+### Otimizadores
+
+- **`Optimizer`**: Classe base para otimizadores.
+- **`SGD`**: ImplementaÃ§Ã£o do otimizador Stochastic Gradient Descent.
+
+### FunÃ§Ãµes de Perda
+
+- **`Loss`**: Classe base para funÃ§Ãµes de perda.
+- **`MeanSquaredError`**: ImplementaÃ§Ã£o da funÃ§Ã£o de perda Mean Squared Error.
+
+## InstalaÃ§Ã£o
+
+Clone o repositÃ³rio e instale as dependÃªncias necessÃ¡rias:
+
+```bash
+git clone https://github.com/wanbnn/ezneural.git
+cd ezneural
+pip install numpy
+```
+
+Uso
+Aqui estÃ¡ um exemplo bÃ¡sico de como usar a biblioteca:
+
+```python
+from ezneural.model import Model
+from ezneural.layers import Dense
+from ezneural.optimizers import SGD
+from ezneural.utils import MeanSquaredError
+import numpy as np
+
+# Criar o modelo
+model = Model()
+model.add(Dense(2, 10, activation='relu'))
+model.add(Dense(10, 1, activation='sigmoid'))
+
+# Compilar o modelo
+optimizer = SGD(learning_rate=0.01)
+loss_function = MeanSquaredError()
+model.compile(loss_function, optimizer)
+
+# Dados fictÃ­cios
+X_train = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y_train = np.array([[0], [1], [1], [0]])
+
+# Treinar o modelo
+model.train(X_train, y_train, epochs=1000, batch_size=4)
+
+# Fazer previsÃµes
+predictions = model.predict(X_train)
+print(predictions)
+```
+
+
+ContribuiÃ§Ãµes sÃ£o bem-vindas! Sinta-se Ã  vontade para enviar pull requests ou abrir issues para discutir melhorias.
+
+LicenÃ§a
+Este projeto Ã© licenciado sob a licenÃ§a MIT. Veja o arquivo LICENSE para mais detalhes.
