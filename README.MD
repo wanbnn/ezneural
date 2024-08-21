@@ -10,17 +10,6 @@
 - Otimizador SGD (Stochastic Gradient Descent)
 - Interface intuitiva para construção e treinamento de redes neurais
 
-## Estrutura do Projeto
-
-O projeto está organizado da seguinte maneira:
-
-ezneural/
-init.py
-layers.py
-model.py
-optimizers.py
-utils.py
-
 ### Camadas
 
 - **`Dense`**: Camada densa totalmente conectada com funções de ativação ReLU, Sigmoid ou Tanh.
